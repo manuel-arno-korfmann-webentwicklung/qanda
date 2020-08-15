@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy, :answer]
-
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :answer, :check_answer]
+  skip_forgery_protection only: [:check_answer]
   # GET /questions
   # GET /questions.json
   def index
@@ -14,6 +14,12 @@ class QuestionsController < ApplicationController
   
   # GET /questions/1
   def answer
+  end
+  
+  # POST /questions/1/check_answer
+  def check_answer
+    provided_answer = check_answer_params[:providedAnswer]
+    render json: { correct_answer_given: @question.correct_answer == provided_answer }
   end
 
   # GET /questions/new
@@ -74,5 +80,9 @@ class QuestionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def question_params
       params.require(:question).permit(:question_text, :answer_a, :answer_b, :answer_c, :answer_d, :like_count, :dislike_count, :correct_answer, :correct_answers_received, :incorrect_answers_received, :tags)
+    end
+    
+    def check_answer_params
+      params.require(:question).permit(:providedAnswer)
     end
 end

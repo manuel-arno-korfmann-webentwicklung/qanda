@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :questions do
     member do
       get :answer
+      post :check_answer
     end
   end
   
