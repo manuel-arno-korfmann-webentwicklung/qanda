@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'prototype/feed'
   get 'static_pages/imprint'
   resources :questions do
