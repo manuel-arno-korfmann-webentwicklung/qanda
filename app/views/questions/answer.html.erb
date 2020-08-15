@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question text:</strong>
+  <%= @question.question_text %>
+</p>
+
+<p>
+  <strong>Answer a:</strong>
+  <%= @question.answer_a %>
+</p>
+
+<p>
+  <strong>Answer b:</strong>
+  <%= @question.answer_b %>
+</p>
+
+<p>
+  <strong>Answer c:</strong>
+  <%= @question.answer_c %>
+</p>
+
+<p>
+  <strong>Answer d:</strong>
+  <%= @question.answer_d %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @question.tags %>
+</p>
+
+
+
+<input value="https://qandahq.herokuapp.com/questions/<%= @question.id %>/answer">
