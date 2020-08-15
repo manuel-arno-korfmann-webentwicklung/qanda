@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'prototype/feed'
   get 'static_pages/imprint'
   resources :questions do
     member do
@@ -7,6 +8,6 @@ Rails.application.routes.draw do
     end
   end
   
-  root to: 'questions#index'
+  root to: 'prototype#feed'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

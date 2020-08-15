@@ -1,0 +1,17 @@
+
+<h1>@KorfmannArno</h1>
+<button class='btn btn-primary'>Follow</button>
+
+<br />
+<br />
+
+
+<div class='list-group'>
+<% Question.all.each do |question| %>
+  <% @question = question %>
+  
+  <div class='list-group-item'>
+  <%= render file: 'questions/answer' %>
+  </div>
+<% end %>
+</div>

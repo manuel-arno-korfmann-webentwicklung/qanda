@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Question:</strong>
   <%= @question.question_text %>
 </p>
 
@@ -10,8 +9,8 @@
   <div class='list-group-item' onclick="this.querySelector('input').checked = true">
     <p>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="answer_<%= letter %>" name="answer" value="<%= letter %>">
-        <label for="answer_<%= letter %>">
+        <input class="form-check-input" type="radio" id="question_<%= @question.id %>_answer_<%= letter %>" name="<%= @question.id %>_answer" value="<%= letter %>">
+        <label for="question_<%= @question.id %>_answer_<%= letter %>">
   
           <strong><%= letter.upcase %>:</strong>
           <%= @question.public_send("answer_#{letter}") %>
@@ -25,31 +24,31 @@
 
 <br />
 
-<button onclick="submitAnswer()" class="btn btn-primary btn-block">Submit</button>
+<button onclick="submitAnswer(<%= @question.id %>)" class="btn btn-primary btn-block">Submit</button>
 <script>
-  document.onkeypress = function(e) {
-    switch(e.keyCode) {
-      case 13:
-        submitAnswer();
-        break;
-      case 97: case 49:
-        document.querySelector("#answer_a").checked = true;
-        break;
-      case 98: case 50:
-        document.querySelector("#answer_b").checked = true;
-        break;
-      case 99: case 51:
-        document.querySelector("#answer_c").checked = true;
-        break;
-      case 100: case 52:
-        document.querySelector("#answer_d").checked = true;
-        break;
-    }
-
-  }
-  
-  function submitAnswer() {
-    const rbs = document.querySelectorAll('input[name="answer"]');
+  // document.onkeypress = function(e) {
+  //   switch(e.keyCode) {
+  //     case 13:
+  //       submitAnswer(<%= @question.id %>);
+  //       break;
+  //     case 97: case 49:
+  //       document.querySelector("#question_<%= @question.id %>_answer_a").checked = true;
+  //       break;
+  //     case 98: case 50:
+  //       document.querySelector("#question_<%= @question.id %>_answer_b").checked = true;
+  //       break;
+  //     case 99: case 51:
+  //       document.querySelector("#question_<%= @question.id %>_answer_c").checked = true;
+  //       break;
+  //     case 100: case 52:
+  //       document.querySelector("#question_<%= @question.id %>_answer_d").checked = true;
+  //       break;
+  //   }
+  //
+  // }
+  //
+  function submitAnswer(questionId) {
+    const rbs = document.querySelectorAll(`input[name="${questionId}_answer"]`);
        let selectedValue;
        for (const rb of rbs) {
            if (rb.checked) {
@@ -65,7 +64,7 @@
          let data = {"question": {"providedAnswer": selectedValue }}
          
          
-          fetch("/questions/<%= @question.id %>/check_answer", {
+          fetch(`/questions/${questionId}/check_answer`, {
             method: "POST", 
             body: JSON.stringify(data),
             headers:  {
