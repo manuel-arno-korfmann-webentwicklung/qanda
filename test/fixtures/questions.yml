@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question_text: MyText
+  answer_a: MyString
+  answer_b: MyString
+  answer_c: MyString
+  answer_d: MyString
+  like_count: 1
+  dislike_count: 1
+  correct_answer: MyString
+  correct_answers_received: 1
+  incorrect_answers_received: 1
+  tags: MyText
+
+two:
+  question_text: MyText
+  answer_a: MyString
+  answer_b: MyString
+  answer_c: MyString
+  answer_d: MyString
+  like_count: 1
+  dislike_count: 1
+  correct_answer: MyString
+  correct_answers_received: 1
+  incorrect_answers_received: 1
+  tags: MyText

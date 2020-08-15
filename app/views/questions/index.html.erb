@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question text</th>
+      <th>Answer a</th>
+      <th>Answer b</th>
+      <th>Answer c</th>
+      <th>Answer d</th>
+      <th>Like count</th>
+      <th>Dislike count</th>
+      <th>Correct answer</th>
+      <th>Correct answers received</th>
+      <th>Incorrect answers received</th>
+      <th>Tags</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.question_text %></td>
+        <td><%= question.answer_a %></td>
+        <td><%= question.answer_b %></td>
+        <td><%= question.answer_c %></td>
+        <td><%= question.answer_d %></td>
+        <td><%= question.like_count %></td>
+        <td><%= question.dislike_count %></td>
+        <td><%= question.correct_answer %></td>
+        <td><%= question.correct_answers_received %></td>
+        <td><%= question.incorrect_answers_received %></td>
+        <td><%= question.tags %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>

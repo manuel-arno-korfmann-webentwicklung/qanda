@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question text:</strong>
+  <%= @question.question_text %>
+</p>
+
+<p>
+  <strong>Answer a:</strong>
+  <%= @question.answer_a %>
+</p>
+
+<p>
+  <strong>Answer b:</strong>
+  <%= @question.answer_b %>
+</p>
+
+<p>
+  <strong>Answer c:</strong>
+  <%= @question.answer_c %>
+</p>
+
+<p>
+  <strong>Answer d:</strong>
+  <%= @question.answer_d %>
+</p>
+
+<p>
+  <strong>Like count:</strong>
+  <%= @question.like_count %>
+</p>
+
+<p>
+  <strong>Dislike count:</strong>
+  <%= @question.dislike_count %>
+</p>
+
+<p>
+  <strong>Correct answer:</strong>
+  <%= @question.correct_answer %>
+</p>
+
+<p>
+  <strong>Correct answers received:</strong>
+  <%= @question.correct_answers_received %>
+</p>
+
+<p>
+  <strong>Incorrect answers received:</strong>
+  <%= @question.incorrect_answers_received %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @question.tags %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
