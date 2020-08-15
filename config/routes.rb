@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/imprint'
   resources :questions do
     member do
       get :answer
