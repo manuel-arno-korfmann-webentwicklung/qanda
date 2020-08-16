@@ -4,13 +4,14 @@
 <br />
 <br />
 
+<%- if user_signed_in? %>
 
-<div class='list-group'>
-<% Question.all.each do |question| %>
-  <% @question = question %>
-  
-  <div class='list-group-item'>
-  <%= render file: 'questions/answer' %>
-  </div>
-<% end %>
+  <% if current_user.feed.empty? %>
+    <p> Please follow other users to see questions in your feed: <%= link_to 'List of users', users_path %> </p>
+  <% end %>
+  <%= render 'questions/feed', questions: current_user.feed %>
 </div>
+<%- else %>
+  <%= render 'questions/feed', questions: Question.all %>
+</div>
+<% end %>

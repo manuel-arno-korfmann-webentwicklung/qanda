@@ -19,12 +19,22 @@ class QuestionsController < ApplicationController
   # POST /questions/1/check_answer
   def check_answer
     provided_answer = check_answer_params[:providedAnswer]
-    render json: { correct_answer_given: @question.correct_answer == provided_answer }
+    
+    is_correct_answer = @question.correct_answer == provided_answer
+    
+    if is_correct_answer == true
+      @question.increment!(:correct_answers_received)
+    else
+      @question.increment!(:incorrect_answers_received)
+    end
+    
+    render json: { correct_answer_given: is_correct_answer }
   end
 
   # GET /questions/new
   def new
     @question = Question.new
+    
   end
 
   # GET /questions/1/edit
@@ -35,6 +45,8 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    
+    @question.user_id = user_signed_in? ? current_user.id : User.find_by_handle('LoggedOutUser').id
 
     respond_to do |format|
       if @question.save

@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+  #$SEQUENCE_IMPROTANT
   devise_for :users
+  
+  resources :users, only: [:show, :index] do
+    member do
+      post :follow
+      delete :unfollow
+    end
+  end
+  #/$SEQUENCE_IMPORTANT
+  
   get 'prototype/feed'
   get 'static_pages/imprint'
   resources :questions do

@@ -1,4 +1,4 @@
-<h3><a href='#'>@KorfmannArno</a> - <span class='muted'><%= time_ago_in_words(@question.created_at) %> ago</span></h3>
+<h3><a href='<%= user_path(@question.user_id) %>'>@KorfmannArno</a> - <span class='muted'><%= time_ago_in_words(@question.created_at) %> ago</span></h3>
 <p>
   <%= @question.question_text %>
 </p>
