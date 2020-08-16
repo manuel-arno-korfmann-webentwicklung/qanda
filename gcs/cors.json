@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["https://qandahq.herokuapp.com/"],
+      "method": ["PUT"],
+      "responseHeader": ["*"],
+      "maxAgeSeconds": 3600
+    }
+]
