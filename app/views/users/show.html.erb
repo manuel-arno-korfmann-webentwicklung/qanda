@@ -1,0 +1,13 @@
+<h1><%= @user.handle %></h1>
+
+<% unless user_signed_in? && current_user.id == @user.id %>
+  <%- if current_user.follows?(@user) %>
+    <%= button_to 'Unfollow', unfollow_user_path, method: :delete, class: 'btn btn-danger' %>  
+  <%- else %>
+    <%= button_to 'Follow', follow_user_path, class: 'btn btn-primary'  %>  
+  <% end %>
+<% end %>
+
+<br />
+
+<%= render 'questions/feed', questions: @user.questions %>

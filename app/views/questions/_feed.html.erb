@@ -1,0 +1,9 @@
+<div class='list-group'>
+  <% questions.each do |question| %>
+    <% @question = question %>
+  
+    <div class='list-group-item'>
+      <%= render file: 'questions/answer' %>
+    </div>
+  <% end %>
+</div>

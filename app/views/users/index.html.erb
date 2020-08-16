@@ -1,0 +1,31 @@
+
+
+<table class='table'>
+  <tr>
+    <th>
+      Handle
+    </th>
+    <th>
+      Questions
+    </th>
+    <th>
+      Profile link
+    </th>
+  </tr>
+  
+  <%- @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.handle %>
+      </td>
+      
+      <td>
+        <%= user.questions.count %>
+      </td>
+      
+      <td>
+        <%= link_to 'Profile', user_path(user) %>
+      </td>
+    </tr>
+  <%- end %>
+</table>
