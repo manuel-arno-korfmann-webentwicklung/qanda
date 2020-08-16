@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:index]
+  
   #$SEQUENCE_IMPROTANT
   devise_for :users
   

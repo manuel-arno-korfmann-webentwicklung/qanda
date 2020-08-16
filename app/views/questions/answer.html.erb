@@ -102,3 +102,7 @@
   <input value="https://qandahq.herokuapp.com/questions/<%= @question.id %>/answer">
 </p>
 
+
+<p>
+  <a href="/comments?commentable_type=Question&commentable_id=<%= @question.id %>">Comments (<%= @question.comments.count %>)</strong></a>
+</p>
