@@ -61,7 +61,8 @@ end
 group :production do
   gem 'pg'
   gem "google-cloud-storage", "~> 1.11", require: false
-  gem 'mini_magick'
+  # gem 'mini_magick'
+  gem "image_processing"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
