@@ -5,7 +5,7 @@ ruby '2.7.1'
 
 gem 'devise'
 gem 'omniauth-twitter'
-gem "google-cloud-storage", "~> 1.11", require: false
+
 
 gem 'bootstrap', '~> 5.0.0.alpha1'
 
@@ -60,6 +60,8 @@ end
 
 group :production do
   gem 'pg'
+  gem "google-cloud-storage", "~> 1.11", require: false
+  gem 'mini_magick'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
