@@ -5,6 +5,7 @@ ruby '2.7.1'
 
 gem 'devise'
 gem 'omniauth-twitter'
+gem "google-cloud-storage", "~> 1.11", require: false
 
 gem 'bootstrap', '~> 5.0.0.alpha1'
 
