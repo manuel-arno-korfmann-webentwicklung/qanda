@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :answer, :check_answer]
   skip_forgery_protection only: [:check_answer]
   
-  http_basic_authenticate_with name: "admin", password: ENV["ADMIN_PASSWORD"], except: [:new, :create, :answer, :check_answers]
+  http_basic_authenticate_with name: "admin", password: ENV["ADMIN_PASSWORD"], except: [:new, :create, :answer, :check_answer]
   
   # GET /questions
   # GET /questions.json
