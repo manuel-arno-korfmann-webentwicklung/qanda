@@ -11,43 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :question_text %>
+  <div class="md-3">
+    <%= form.label :question_text, class: 'form-label' %>
     <%= form.rich_text_area :question_text %>
   </div>
 
-  <div class="field">
-    <%= form.label :answer_a %>
-    <%= form.text_field :answer_a %>
+  <div class="mb-3">
+    <%= form.label :answer_a, class: 'form-label' %>
+    <%= form.text_field :answer_a, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :answer_b %>
-    <%= form.text_field :answer_b %>
+  <div class="mb-3">
+    <%= form.label :answer_b, class: 'form-label' %>
+    <%= form.text_field :answer_b, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :answer_c %>
-    <%= form.text_field :answer_c %>
+  <div class="mb-3">
+    <%= form.label :answer_c, class: 'form-label' %>
+    <%= form.text_field :answer_c, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :answer_d %>
-    <%= form.text_field :answer_d %>
+  <div class="mb-3">
+    <%= form.label :answer_d, class: 'form-label' %>
+    <%= form.text_field :answer_d, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :correct_answer, class: 'form-label' %>
+    <%= form.select :correct_answer, %w(a b c d), {}, class: 'form-select' %>
   </div>
 
 
-  <div class="field">
-    <%= form.label :correct_answer %>
-    <%= form.text_field :correct_answer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_field :tags %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit class: 'btn btn-primary' %>
 <% end %>
