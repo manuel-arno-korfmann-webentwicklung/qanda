@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   def show
   end
   
-  # GET /questions/1
+  # GET /questions/1/answer
   def answer
   end
   

@@ -1,4 +1,15 @@
-<h3><a href='<%= user_path(@question.user_id) %>'>@<%= User.find(@question.user_id).handle%></a> - <span class='muted'><%= time_ago_in_words(@question.created_at) %> ago</span></h3>
+<h3>
+  <a href='<%= user_path(@question.user_id) %>'>
+    @<%= User.find(@question.user_id).handle%>
+  </a>
+  -
+  <span class='muted'>
+    <a href="https://qandahq.herokuapp.com/questions/<%= @question.id %>/answer">
+      <%= time_ago_in_words(@question.created_at) %> ago
+    </a>
+  </span>
+</h3>
+
 <p>
   <%= @question.question_text %>
 </p>
@@ -25,27 +36,7 @@
 
 <button onclick="submitAnswer(<%= @question.id %>)" class="btn btn-primary btn-block">Submit</button>
 <script>
-  // document.onkeypress = function(e) {
-  //   switch(e.keyCode) {
-  //     case 13:
-  //       submitAnswer(<%= @question.id %>);
-  //       break;
-  //     case 97: case 49:
-  //       document.querySelector("#question_<%= @question.id %>_answer_a").checked = true;
-  //       break;
-  //     case 98: case 50:
-  //       document.querySelector("#question_<%= @question.id %>_answer_b").checked = true;
-  //       break;
-  //     case 99: case 51:
-  //       document.querySelector("#question_<%= @question.id %>_answer_c").checked = true;
-  //       break;
-  //     case 100: case 52:
-  //       document.querySelector("#question_<%= @question.id %>_answer_d").checked = true;
-  //       break;
-  //   }
-  //
-  // }
-  //
+
   function submitAnswer(questionId) {
     const rbs = document.querySelectorAll(`input[name="${questionId}_answer"]`);
        let selectedValue;
@@ -90,19 +81,7 @@
 <br />
 <br />
 
-<p>
-  <strong>Tags:</strong>
-  <%= @question.tags %>
-</p>
 
-
-
-<p>
-  <strong>Copy url:</strong>  
-  <input value="https://qandahq.herokuapp.com/questions/<%= @question.id %>/answer">
-</p>
-
-
-<p>
+<!--<p>
   <a href="/comments?commentable_type=Question&commentable_id=<%= @question.id %>">Comments (<%= @question.comments.count %>)</strong></a>
-</p>
+</p> -->
