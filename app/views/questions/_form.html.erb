@@ -1,3 +1,21 @@
+<style>
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<ul class="nav nav-tabs mb-3" id="post-types" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="post-types-multiple-choice-tab" data-toggle="pill" href="#post-types-multiple-choice" role="tab" aria-controls="post-types-multiple-choice" aria-selected="true">Multiple choice</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="post-types-exact-tab" data-toggle="pill" href="#post-types-exact" role="tab" aria-controls="post-types-exact" aria-selected="false">Exact</a>
+  </li>
+</ul>
+
+
+<div class="tab-content" id="post-types-tabContent">
+  <div class="tab-pane fade show active" id="post-types-multiple-choice" role="tabpanel" aria-labelledby="post-types-multiple-choice-tab">
 <%= form_with(model: question, local: true) do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
@@ -44,3 +62,36 @@
 
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>
+  </div>
+  <div class="tab-pane fade" id="post-types-exact" role="tabpanel" aria-labelledby="post-types-exact-tab">
+<%= form_with(model: question, local: true) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="md-3">
+    <%= form.label :question_text, 'Question', class: 'form-label' %>
+    <%= form.rich_text_area :question_text %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :answer_a, 'Answer', class: 'form-label' %>
+    <%= form.text_field :answer_a, class: 'form-control' %>
+  </div>
+
+
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>
+  </div>
+</div>
+
+
+
