@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :answer, :check_answer]
   skip_forgery_protection only: [:check_answer]
   
-  before_action :authenticate_user, except: [:new, :create, :answer, :check_answer]
+  before_action :authenticate_user!, except: [:new, :create, :answer, :check_answer]
   before_action :authenticate_admin_or_owner, except: [:new, :create, :answer, :check_answer]
   
   def authenticate_admin_or_owner
