@@ -2,7 +2,17 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :answer, :check_answer]
   skip_forgery_protection only: [:check_answer]
   
-  http_basic_authenticate_with name: "admin", password: ENV["ADMIN_PASSWORD"], except: [:new, :create, :answer, :check_answer]
+  before_action :authenticate_user, except: [:new, :create, :answer, :check_answer]
+  before_action :authenticate_admin_or_owner, except: [:new, :create, :answer, :check_answer]
+  
+  def authenticate_admin_or_owner
+    is_owner = @question.present? && @question.user.id == current_user.id
+    is_admin = current_user.admin?
+    
+    unless is_owner && is_admin
+      redirect_to root_path
+    end
+  end
   
   # GET /questions
   # GET /questions.json
@@ -53,7 +63,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to answer_question_path(@question), notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }

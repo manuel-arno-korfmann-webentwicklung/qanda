@@ -32,6 +32,9 @@
 <% end %>
 </div>
 
+<%- if user_signed_in? && @question.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_question_path, class: 'btn btn-secondary' %>
+<% end %>
 <br />
 
 <button onclick="submitAnswer(<%= @question.id %>)" class="btn btn-primary btn-block">Submit</button>
