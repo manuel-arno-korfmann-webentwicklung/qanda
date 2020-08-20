@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     is_owner = @question.present? && @question.user.id == current_user.id
     is_admin = current_user.admin?
     
-    unless is_owner && is_admin
+    unless is_owner || is_admin
       redirect_to root_path
     end
   end
